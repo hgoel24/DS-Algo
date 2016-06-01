@@ -31,7 +31,7 @@ class List
 		int deleteFromHead();
 		int deleteFromTail();
 		void deleteNode(int val);
-		bool isInList(int val);
+		void isInList(int val);
 		void display();
 	private:
 		Node *head,*tail;
@@ -108,11 +108,22 @@ void List::deleteNode(int val)
 	}
 }
 
-bool List::isInList(int val)
+void List::isInList(int val)
 {
-	Node *tmp;
-	for(tmp=head; tmp!=0 &&!(tmp->info==val); tmp=tmp->next);
-	return tmp!=0;
+	Node *tmp=head;
+	int flag=0;
+	while(tmp->next!=NULL)
+	{
+		if(tmp->info==val)
+			flag=1;
+		else
+			flag=0;
+		tmp=tmp->next;
+	}
+	if(flag==1)
+		cout<<"Node Found\n";
+	else
+		cout<<"Node Not Found\n";
 }
 
 void List::display()
